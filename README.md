@@ -48,4 +48,4 @@ Build a Neural Network from scratch to predict images of cats and dogs
   at the same time
 - this is a very simple example and not how normal neural nets work, but this provides
   a small window into what is happening under the hood
-  ![neural-net]()
+  ![neural-net](https://raw.githubusercontent.com/kawgh1/cat-dog-neural-network/main/images/basic%20neural%20net.gif)
