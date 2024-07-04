@@ -44,8 +44,10 @@ Build a Neural Network from scratch to predict images of cats and dogs
 
 - Here is an example of a basic stripped down neural net that is matching it's output
   to a sinusoidal curve
-- the output is only expressed when both neurons in the saw row are active (green)
-  at the same time
-- this is a very simple example and not how normal neural nets work, but this provides
-  a small window into what is happening under the hood
-  ![neural-net](https://raw.githubusercontent.com/kawgh1/cat-dog-neural-network/main/images/basic%20neural%20net.gif)
+  - the output is only expressed when both neurons in the same row's **activation functions** are active (green)
+    at the same time
+  - this is a very simple example and not how normal neural nets work, but this provides
+    a small window into what is happening under the hood
+    <br>
+    <br>
+    ![neural-net](https://raw.githubusercontent.com/kawgh1/cat-dog-neural-network/main/images/basic%20neural%20net.gif)
