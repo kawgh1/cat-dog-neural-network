@@ -58,6 +58,8 @@ Build a Neural Network from scratch to predict images of cats and dogs
   - [here](https://github.com/kawgh1/cat-dog-neural-network/blob/main/create_data.py)
     <br>
     <br>
-    ![dataset1](https://raw.githubusercontent.com/kawgh1/cat-dog-neural-network/main/images/dataset1.png)
-    <br>
-    ![dataset1-rgb](https://raw.githubusercontent.com/kawgh1/cat-dog-neural-network/main/images/dataset1%20rgb.png)
+    - raw data plot
+      ![dataset1](https://raw.githubusercontent.com/kawgh1/cat-dog-neural-network/main/images/dataset1.png)
+      <br>
+    - raw data as 3 color-coded samples (red, blue, green)
+      ![dataset1-rgb](https://raw.githubusercontent.com/kawgh1/cat-dog-neural-network/main/images/dataset1%20rgb.png)
