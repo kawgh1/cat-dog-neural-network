@@ -37,4 +37,4 @@ Build a Neural Network from scratch to predict images of cats and dogs
   - Linear Activation Functions simply can't model curves
     so we need a way to accurately model the data
   - Non-Linear Activation functions are much more precise and efficient
-    ![linear-activation-function]()
+    ![linear-activation-function](https://github.com/kawgh1/cat-dog-neural-network/blob/main/images/linear%20activation%20function.png)
