@@ -22,11 +22,19 @@ Build a Neural Network from scratch to predict images of cats and dogs
 ### Activation Functions
 
 - Every neuron in the hidden layers of a network has an activation function
-- Step Function Activation Function
+- **Step Function** Activation Function
   - They will either output 1 or 0
-- Sigmoid
+- **Sigmoid**
   - S shape curver with an output between 0 and 1
-- Rectified Linear Unit (ReLU)
-  - if the output is greater than 0, output = ouput
-  - if the out is <= 0, output = 0
+- **Rectified Linear Unit (ReLU)**
+
+  - if the output > 0, output == ouput
+  - if the output <= 0, output == 0
   - elbow shap \_\_/
+  - most common
+
+- What is the point of **Activation Functions**?
+  - Linear Activation Functions simply can't model curves
+    so we need a way to accurately model the data
+  - Non-Linear Activation functions are much more precise and efficient
+    ![linear-activation-function]()
