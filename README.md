@@ -55,5 +55,6 @@ Build a Neural Network from scratch to predict images of cats and dogs
 ### Create our data set
 
 - this dataset will represent three samples (red, blue and green dots) that appear in a spiral formation
-  ![dataset1]()
-  ![dataset1-rgb]()
+  - ![here](https://github.com/kawgh1/cat-dog-neural-network/blob/main/create_data.py)
+    ![dataset1](https://raw.githubusercontent.com/kawgh1/cat-dog-neural-network/main/images/dataset1.png)
+    ![dataset1-rgb](https://raw.githubusercontent.com/kawgh1/cat-dog-neural-network/main/images/dataset1%20rgb.png)
