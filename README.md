@@ -116,6 +116,9 @@ Build a Neural Network from scratch to predict images of cats and dogs
   - Calculating Cross Entropy Loss
 
     - ![cross-entropy](https://raw.githubusercontent.com/kawgh1/cat-dog-neural-network/main/images/cross%20entropy.png)
+      <br>
+    - ![cross-entropy-2](https://raw.githubusercontent.com/kawgh1/cat-dog-neural-network/main/images/cross%20entropy%202.png)
+      - Finding Cross Entropy on an output involves finding the Sum &Sigma; of each of the target class value ("1" or "0" when using one-hot encoding) and multiplying it by the log of the predicted value (or the softmax output value).
 
   - ```
       import math
