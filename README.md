@@ -104,3 +104,30 @@ Build a Neural Network from scratch to predict images of cats and dogs
     - Since our model is not a linear regression model, we cannot use the Mean-Squared Error cost function. MSE should only be used on linear regression models.
     - Our model is a **Classification model** so we need a different loss function. The model has a softmax activation function which means it is outputting a probability distribution. **Categorical Cross-Entropy** is explicitly used to compare a "ground-truth" probability (y or "targets") and some predicted distribution (y-hat or "predictions"), so it makes sense to use Cross-Entropy here.
       - **Categorical Cross-Entropy** is one of the most commonly used loss functions with a **softmax activation** on the **output layer**.
+
+### Logarithm
+
+- Cross-entropy, also known as logarithmic loss or log loss, is a popular loss function used in machine learning to measure the performance of a classification model. Namely, it measures the difference between the discovered probability distribution of a classification model and the predicted values.
+
+  - Finding the natural log of a number is solving for x:
+
+    - `e ^ x = b`
+
+  - Calculating Cross Entropy Loss
+
+    - ![cross-entropy]()
+
+  - ```
+      import math
+
+      softmax_output = [0.7, 0.1, 0.2] # example output from a softmax function
+
+      target_output = [1, 0, 0] # one-hot encoding
+
+      loss = - (math.log(softmax_output[0]) * target_output[0] +
+          math.log(softmax_output[1]) * target_output[1] +
+          math.log(softmax_output[2]) * target_output[2] )
+
+      # loss = - ( -0.356674943938 + 0 + 0)
+      # loss = 0.35667494393873245
+    ```
