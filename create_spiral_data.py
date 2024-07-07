@@ -5,16 +5,16 @@ import numpy as np
 np.random.seed(0)
 
 # https://cs231n.github.io/neural-networks-case-study
-def create_data(points, classes):
-    X = np.zeros((points*classes, 2))
-    y = np.zeros(points*classes, dtype='uint8')
+def create_data(samples, classes):
+    X = np.zeros((samples*classes, 2))
+    y = np.zeros(samples*classes, dtype='uint8')
     
     for class_number in range(classes):
-        idx = range(points*class_number, points*(class_number+1))
-        r = np.linspace(0.0, 1, points) # radius
+        idx = range(samples*class_number, samples*(class_number+1))
+        r = np.linspace(0.0, 1, samples) # radius
         
-        t = (np.linspace(class_number * 4, (class_number+1) * 4, points) 
-             + np.random.randn(points) * 0.2 )
+        t = (np.linspace(class_number * 4, (class_number+1) * 4, samples) 
+             + np.random.randn(samples) * 0.2 )
         
         X[idx] = np.c_[r*np.sin(t*2.5), r*np.cos(t*2.5)]
         y[idx] = class_number

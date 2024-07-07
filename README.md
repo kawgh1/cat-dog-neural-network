@@ -63,3 +63,44 @@ Build a Neural Network from scratch to predict images of cats and dogs
       <br>
     - raw data as 3 color-coded samples (red, blue, green)
       ![dataset1-rgb](https://raw.githubusercontent.com/kawgh1/cat-dog-neural-network/main/images/dataset1%20rgb.png)
+
+### Softmax Activation Function
+
+- In our case, we’re looking to get this model to be a **classifier**, so we want an activation function
+  meant for classification. One of these is the **Softmax** activation function. **_First, why are we_**
+  **_bothering with another activation function? It just depends on what our overall goals are._**
+  - In this case, the rectified linear unit is _unbounded_, _not normalized_ with other units, and _exclusive_.
+    - **“Not** **normalized” implies the values can be anything, an output of [12, -99, 318] is without context,**
+      **and “exclusive” means each output is independent of the others.**
+    - To address this lack of context, the softmax activation on the output data can take in non-normalized, or uncalibrated, inputs and **produce a normalized distribution of probabilities for our classes user Euler's number E, under the hood.**
+    - In the case of classification, what we want to see is a prediction of which class the network “thinks” the input represents.
+      - This distribution returned by the softmax activation function represents confidence scores for each
+        class and will add up to 1. The predicted class is associated with the output neuron that returned
+        the largest confidence score. Still, we can also note the other confidence scores in our overarching
+        algorithm/program that uses this network.
+      - For example, if our classification network has a confidence
+        distribution for two classes: **[0.45, 0.55]**, the prediction is the 2nd class, but the confidence in
+        this prediction isn’t very high. Maybe our program would not act in this case since it’s not very
+        confident.
+
+### Calculating Network Error with Loss Functions
+
+- With a randomly-initialized model, or even a model initialized with more sophisticated
+  approaches, our goal is to train, or teach, a model over time. To train a model, we tweak the
+  weights and biases to improve the model’s accuracy and confidence. To do this, we calculate how
+  much error the model has.
+- The loss function, also referred to as the cost function, is the algorithm
+  that quantifies how wrong a model is. Loss is the measure of this metric. Since loss is the model’s
+  error, we ideally want it to be 0.
+  - You may wonder why we do not calculate the error of a model based on the argmax accuracy.
+    - Recall our earlier example of confidence: [0.22, 0.6, 0.18] vs [0.32, 0.36, 0.32].
+      If the correct class were indeed the middle one (index 1), the model accuracy would be identical
+      between the two above. But are these two examples really as accurate as each other? They are
+      not, because accuracy is simply applying an argmax to the output to find the index of the biggest
+      value. The output of a neural network is actually confidence, and more confidence in the correct
+      answer is better. Because of this, we strive to increase correct confidence and decrease misplaced
+      confidence.
+    ### - Categorical Cross-Entropy Loss
+    - Since our model is not a linear regression model, we cannot use the Mean-Squared Error cost function. MSE should only be used on linear regression models.
+    - Our model is a **Classification model** so we need a different loss function. The model has a softmax activation function which means it is outputting a probability distribution. **Categorical Cross-Entropy** is explicitly used to compare a "ground-truth" probability (y or "targets") and some predicted distribution (y-hat or "predictions"), so it makes sense to use Cross-Entropy here.
+      - **Categorical Cross-Entropy** is one of the most commonly used loss functions with a **softmax activation** on the **output layer**.
