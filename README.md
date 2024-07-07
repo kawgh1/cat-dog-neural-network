@@ -105,7 +105,7 @@ Build a Neural Network from scratch to predict images of cats and dogs
     - Our model is a **Classification model** so we need a different loss function. The model has a softmax activation function which means it is outputting a probability distribution. **Categorical Cross-Entropy** is explicitly used to compare a "ground-truth" probability (y or "targets") and some predicted distribution (y-hat or "predictions"), so it makes sense to use Cross-Entropy here.
       - **Categorical Cross-Entropy** is one of the most commonly used loss functions with a **softmax activation** on the **output layer**.
 
-### Calculating Cross Entropy Loss Function
+### Calculating Categorical Cross Entropy Loss Function
 
 - Cross-entropy, also known as logarithmic loss or log loss, is a popular loss function used in machine learning to measure the performance of a classification model. Namely, it measures the difference between the discovered probability distribution of a classification model and the predicted values.
 
@@ -133,5 +133,31 @@ Build a Neural Network from scratch to predict images of cats and dogs
 
     loss = - ( (1 * -0.35667) + (0 * -2.30259) + (0 * -1.60944) )
     loss = - ( -0.35667 + 0 + 0)
+
+
     loss = 0.35667
     ```
+
+### Implementing Categorical Cross-Entropy Loss
+
+```
+class Loss_CategoricalCrossEntropy(Loss):
+
+    '''
+    y_pred = the values from the Neural Network (output from the Softmax function)
+    y_true = the target values, the values we are training off of, that we know are correct
+    '''
+    def forward(self, y_pred, y_true):
+        samples = len(y_pred)
+        # here we are CLIPPING the values in y_pred to be not less than e^-7 (0.000912)
+        # and not greater than 1-e^-7 (.999088)
+        y_pred_clipped = np.clip(y_pred, 1e-7, 1-1e-7)
+
+        if len(y_true.shape) == 1:
+            correct_confidences = y_pred_clipped[range(samples), y_true]
+        elif len(y_true.shape) == 2:
+            correct_confidences = np.sum(y_pred_clipped * y_true, axis=1)
+
+        negative_log_likelihoods = -np.log(correct_confidences)
+        return negative_log_likelihoods
+```
