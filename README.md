@@ -121,16 +121,17 @@ Build a Neural Network from scratch to predict images of cats and dogs
       - Finding Cross Entropy on an output involves finding the Sum &Sigma; of each of the target class value ("1" or "0" when using one-hot encoding) and multiplying it by the log of the predicted value (or the softmax output value).
 
   - ```
-      import math
+    import math
 
-      softmax_output = [0.7, 0.1, 0.2] # example output from a softmax function
+    softmax_output = [0.7, 0.1, 0.2] # example output from a softmax function
 
-      target_output = [1, 0, 0] # one-hot encoding
+    target_output = [1, 0, 0] # one-hot encoding
 
-      loss = - (math.log(softmax_output[0]) * target_output[0] +
-                math.log(softmax_output[1]) * target_output[1] +
-                math.log(softmax_output[2]) * target_output[2] )
+    loss = - ( target_output[0] * math.log(softmax_output[0]) +
+               target_output[1] * math.log(softmax_output[1]) +
+               target_output[2] * math.log(softmax_output[2]) )
 
-      # loss = - ( -0.356674943938 + 0 + 0)
-      # loss = 0.35667494393873245
+    loss = - ( (1 * -0.35667) + (0 * -2.30259) + (0 * -1.60944) )
+    loss = - ( -0.35667 + 0 + 0)
+    loss = 0.35667
     ```
