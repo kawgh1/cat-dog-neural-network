@@ -105,7 +105,7 @@ Build a Neural Network from scratch to predict images of cats and dogs
     - Our model is a **Classification model** so we need a different loss function. The model has a softmax activation function which means it is outputting a probability distribution. **Categorical Cross-Entropy** is explicitly used to compare a "ground-truth" probability (y or "targets") and some predicted distribution (y-hat or "predictions"), so it makes sense to use Cross-Entropy here.
       - **Categorical Cross-Entropy** is one of the most commonly used loss functions with a **softmax activation** on the **output layer**.
 
-### Logarithm
+### Calculating Cross Entropy Loss Function
 
 - Cross-entropy, also known as logarithmic loss or log loss, is a popular loss function used in machine learning to measure the performance of a classification model. Namely, it measures the difference between the discovered probability distribution of a classification model and the predicted values.
 
@@ -115,7 +115,7 @@ Build a Neural Network from scratch to predict images of cats and dogs
 
   - Calculating Cross Entropy Loss
 
-    - ![cross-entropy]()
+    - ![cross-entropy](https://raw.githubusercontent.com/kawgh1/cat-dog-neural-network/main/images/cross%20entropy.png)
 
   - ```
       import math
@@ -125,8 +125,8 @@ Build a Neural Network from scratch to predict images of cats and dogs
       target_output = [1, 0, 0] # one-hot encoding
 
       loss = - (math.log(softmax_output[0]) * target_output[0] +
-          math.log(softmax_output[1]) * target_output[1] +
-          math.log(softmax_output[2]) * target_output[2] )
+                math.log(softmax_output[1]) * target_output[1] +
+                math.log(softmax_output[2]) * target_output[2] )
 
       # loss = - ( -0.356674943938 + 0 + 0)
       # loss = 0.35667494393873245
