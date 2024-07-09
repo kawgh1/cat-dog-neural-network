@@ -1,4 +1,5 @@
-from create_spiral_data import create_data
+from _5_create_spiral_data import create_data
+from _8_implementing_loss import Loss_CategoricalCrossEntropy
 
 # Spiral Data fed into our basic neural net of 2 layers demo
 
@@ -142,3 +143,13 @@ print("\n\n layer 2 after Softmax activation function: \n\n", activation2.output
 
 # These values are normally distributed (all are about 1/3 or .33) because the sample data was normally distributed
 # to begin with. So we would expect a normalized output from Softmax if we gave it normalized inputs.
+
+# --------------------------------------------------------------------------------------------------
+
+# Calculating Categorical Cross-Entropy Loss
+
+loss_function = Loss_CategoricalCrossEntropy()
+loss = loss_function.calculate(activation2.output, y)
+
+print("\n\n Categorical Cross-Entropy Loss: \n\n", loss)
+#  1.09844

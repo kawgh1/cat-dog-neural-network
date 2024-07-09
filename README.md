@@ -149,15 +149,18 @@ class Loss_CategoricalCrossEntropy(Loss):
     '''
     def forward(self, y_pred, y_true):
         samples = len(y_pred)
-        # here we are CLIPPING the values in y_pred to be not less than e^-7 (0.000912)
-        # and not greater than 1-e^-7 (.999088)
+        # prevent divide by 0 by clipping the values to be between 0 and 1, excluding
         y_pred_clipped = np.clip(y_pred, 1e-7, 1-1e-7)
 
+        # if y_true.shape is scalar values [0, 1, 1, 0...] --> 1-D array
         if len(y_true.shape) == 1:
             correct_confidences = y_pred_clipped[range(samples), y_true]
+        # if y_true.shape is a matrix or one-hot encoding --> 2-D array
         elif len(y_true.shape) == 2:
             correct_confidences = np.sum(y_pred_clipped * y_true, axis=1)
 
         negative_log_likelihoods = -np.log(correct_confidences)
         return negative_log_likelihoods
+
+
 ```

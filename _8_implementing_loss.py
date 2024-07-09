@@ -4,9 +4,9 @@ import numpy as np
 #                    [0.1, 0.5, 0.4],
 #                    [0.02, 0.9, 0.08]]
 
-softmax_outputs = np.array[[0.7, 0.1, 0.2],
-                   [0.1, 0.5, 0.4],
-                   [0.02, 0.9, 0.08]]
+softmax_outputs = np.array([[0.7, 0.1, 0.2],
+                            [0.1, 0.5, 0.4],
+                            [0.02, 0.9, 0.08]])
 
 # Classes:
 # 0 -- dog
@@ -66,15 +66,56 @@ class Loss_CategoricalCrossEntropy(Loss):
     '''
     def forward(self, y_pred, y_true):
         samples = len(y_pred)
+        # prevent divide by 0
         # here we are CLIPPING the values in y_pred to be not less than e^-7 (0.000912)
         # and not greater than 1-e^-7 (.999088)
         y_pred_clipped = np.clip(y_pred, 1e-7, 1-1e-7)
 
+        # if y_true.shape is scalar values [0, 1, 1, 0...] --> 1-D array
         if len(y_true.shape) == 1:
             correct_confidences = y_pred_clipped[range(samples), y_true]
+        # if y_true.shape is a matrix or one-hot encoding
+        # [[0, 0, 1]
+        #  [1, 0, 0],
+        #  [1, 0, 0]] --> 2-D array
         elif len(y_true.shape) == 2:
             correct_confidences = np.sum(y_pred_clipped * y_true, axis=1)
 
         negative_log_likelihoods = -np.log(correct_confidences)
         return negative_log_likelihoods
         
+#----------------------------------------------------------------------------------
+
+
+
+# Handling Accuracy
+
+# How do we tell how accurate our Softmax output predictions were?
+
+softmax_outputs = np.array([[0.7, 0.1, 0.2],
+                            [0.5, 0.1, 0.4],
+                            [0.02, 0.9, 0.08]])
+
+# Classes:
+# 0 -- dog
+# 1 -- cat
+# 2 -- human
+
+class_targets = [0, 1, 1]
+
+# Confidence on the correct labels:
+# 0.7
+# 0.1
+# 0.9
+
+# we can use argmax to determine, for each sample output, if the target value had the highest probability 
+# in our sample, if it did, then that is a positive prediction, if it did not, that would be a failed prediction
+
+predictions = np.argmax(softmax_outputs, axis=1)
+accuracy = np.mean(predictions == class_targets)
+
+print('accuracy: ', accuracy)
+# 0.6666667
+
+
+# so our softmax_ouputs got 2 out 3 correct, or 66.67%
