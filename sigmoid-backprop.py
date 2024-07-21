@@ -1,3 +1,46 @@
+'''
+Backpropagation is a method used in neural networks to adjust the weights 
+of the network to minimize the error in predictions. 
+
+Step-by-Step Explanation
+
+1.) Forward Pass: Compute the output of the network for a given input.
+2.) Compute Loss: Calculate the error (loss) between the predicted output and the actual target.
+3.) Backward Pass: Compute the gradient of the loss with respect to each weight using the chain rule.
+4.)Update Weights: Adjust the weights using the gradients to minimize the loss.
+Example
+
+We'll create a simple neural network with one hidden layer and use the Mean Squared Error (MSE) as our loss function.
+'''
+
+'''
+Network Architecture
+Input layer: 2 neurons
+Hidden layer: 2 neurons
+Output layer: 1 neuron
+'''
+
+'''
+Forward Pass Equations
+Hidden layer activations: 𝑧1 = 𝑊1 ⋅ 𝑥 + 𝑏1
+ 
+Hidden layer outputs:  𝑎1 = 𝜎(𝑧1) (using the sigmoid activation function)
+Output layer activations: 𝑧2 = 𝑊2 ⋅ 𝑎1 + 𝑏2 
+Output layer outputs: 𝑎2 = 𝜎(𝑧2)
+'''
+
+'''
+Loss
+
+Mean Squared Error (MSE):
+Loss = 1/2 * ∑(𝑦 − 𝑎2) ^ 2
+
+
+Backward Pass Equations
+Output layer error: 𝛿2 = (𝑎2 − 𝑦) ⋅ 𝜎′(𝑧2)
+Hidden layer error: 𝛿1 = (𝛿2 ⋅𝑊2) ⋅ 𝜎′(𝑧1)
+'''
+
 import numpy as np
 
 # Sigmoid function and its derivative
@@ -66,3 +109,16 @@ def predict(x):
 # Testing the network on training data
 for x in X:
     print(f"{x} -> {predict(x)}")
+
+'''
+In this example:
+
+We define the sigmoid activation function and its derivative.
+We initialize the input data X and target output y.
+We initialize weights and biases with random values.
+We perform the forward and backward passes iteratively for a specified number of epochs.
+We update the weights and biases based on the computed gradients.
+Finally, we test the trained network on the input data.
+This simple example demonstrates how backpropagation works in a small neural network.
+
+'''
